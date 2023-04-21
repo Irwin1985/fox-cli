@@ -158,3 +158,9 @@ func getLastFolderName tcDirectory
 	next
 	
 	return lcName
+
+#
+# Delete file using cmd
+#
+func deleteFile tcFilePath
+	systemSilent("del " + tcFilePath)

@@ -47,10 +47,6 @@ class Builder
 	 	loVBScript = new VBScript
 		loVBScript.createAndBuildFiles()
 
-		# delete files
-		
-	
-	
 		return fexists(cExecutable)
 
 

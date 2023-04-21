@@ -28,15 +28,29 @@ WScript.Quit 0
 func executeBuildFiles tcPRGBuilder, tcVBScript
 	checkFile(tcPRGBuilder)
 	checkFile(tcVBScript)
+	
+	# Execute build files
 	systemSilent(tcVBScript)
+	
+	# Check for errors
+	lcErrFile = _PROJECT_ROOT + "\.meta\" + _PROJECT_NAME + ".err"
+	if fExists(lcErrFile)
+		lcContent = read(lcErrFile)
+		goPrinter.println(CC_FG_RED, copy("=", 75))
+		goPrinter.println(CC_FG_RED, "COMPILATION ERROR: ")
+		goPrinter.println(CC_FG_RED, lcContent)
+		goPrinter.println(CC_FG_RED, copy("=", 75))
+		deleteFile(lcErrFile)
+	ok
+	
 
 	# delete files
 	lcFxpFile = substr(tcPRGBuilder, 1, len(tcPRGBuilder)-3) + "fxp"
-	systemSilent("del " + tcPRGBuilder)
-	systemSilent("del " + tcVBScript)
+	deleteFile(tcPRGBuilder)
+	deleteFile(tcVBScript)
 
 	if fExists(lcFxpFile)
-		systemSilent("del " + lcFxpFile)
+		deleteFile(lcFxpFile)
 	ok
 
 
