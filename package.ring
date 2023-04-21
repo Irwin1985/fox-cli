@@ -22,7 +22,7 @@ aPackageInfo = [
 	],
 	:files = 	[
 		"lib.ring",
-		"main.ring"
+		"fox.ring"
 	],
 	:ringfolderfiles = 	[
 
